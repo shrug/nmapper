@@ -2,7 +2,7 @@ nmapper
 =======
 
 This is intended to be a quick and dirty solution to display the results of nmap scans. It currently has bare bones
-functionality.
+functionality (as in, it will currently only display a lit of hosts with the number of open ports for each). This is using the database schema from http://www.redspin.com/blog/2009/10/27/nmap-database-output-xml-to-sql/
 
 ### Requires: Sinatra, Datamapper
 
