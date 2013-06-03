@@ -15,9 +15,13 @@ get '/' do
   sortby = (params[:sortby] || 'tcpcount').to_sym
   sort_object = params[:sort_dir] == 'desc' ? sortby.desc : sortby.asc
   @hosts=Host.all(:order => [sort_object])
-  @ports=Ports.all
-  @os=Os.all
 
   erb :index
 end
 
+get "/host/:hid" do
+  @host=Host.find(params[:hid])
+  @ports=Ports.find(params[:hid])
+  # @title = @host.hostname
+  erb :host
+end
