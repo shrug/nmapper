@@ -15,5 +15,7 @@ class Host
     property :distance, Integer
     property :uptime, String
     property :upstr, String
+
+    has n, :ports
 end
 

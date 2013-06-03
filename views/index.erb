@@ -1,0 +1,16 @@
+<table border="1">
+    <tr>
+        <th><a href=?sortby=hostname&sort_dir=asc>Hostname</a></th>
+        <th><a href=?sortby=ip4num&sort_dir=asc>IP Address</a></th>
+        <th><a href=?sortby=tcpcount&sort_dir=desc># open TCP Ports</a></th>
+        <th><a href=?sortby=udpcount&sort_dir=desc># open UDP ports"</a></th>
+    </tr>
+    <% @hosts.each do | host | %>
+        <tr>
+            <td> <%=host.hostname %> </td>
+            <td> <%=host.ip4%> </td>
+            <td> <%=host.tcpcount %> </td>
+            <td> <%=host.udpcount %> </td>
+        </tr>
+    <% end %>
+</table>

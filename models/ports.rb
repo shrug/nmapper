@@ -16,4 +16,6 @@ class Ports
     property :owner, String
     property :rpcnum, String
     property :fingerprint, String
+
+    belongs_to :host
 end
