@@ -17,7 +17,7 @@ DataMapper.finalize
 
 get '/' do
   sortby = (params[:sortby] || 'tcpcount').to_sym
-  sort_object = params[:sort_dir] == 'desc' ? sortby.desc : sortby.asc
+  sort_object = params[:sort_dir] == 'asc' ? sortby.asc : sortby.desc
   @hosts=Host.all(:status=>"up", :order => [sort_object])
 
   erb :index
