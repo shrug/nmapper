@@ -1,4 +1,4 @@
-class Ports
+class Port
     include DataMapper::Resource
 
     property :hid, Integer, :key => true

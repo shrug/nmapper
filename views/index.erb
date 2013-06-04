@@ -13,7 +13,7 @@
     </tr>
     <% @hosts.each do | host | %>
         <tr>
-            <td><a href="host/<%= host.hid %>"> <%=host.hostname %> </a></td>
+            <td><a href="host/<%= host.hid %>"> <%= host.hostname %> </a></td>
             <td> <%=host.ip4%> </td>
             <td> <%=host.tcpcount %> </td>
             <td> <%=host.udpcount %> </td>

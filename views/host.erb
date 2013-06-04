@@ -1,0 +1,18 @@
+<h1><%= @host.hostname %>
+
+<table border="1">
+    <tr>
+        <th>Port</th>
+        <th>Type</th>
+        <th>State</th>
+        <th>Name</th>
+    </tr>
+    <% @ports.uniq.each do | port | %>
+        <tr>
+            <td> <%= port.port %> </td>
+            <td> <%= port.type %> </td>
+            <td> <%= port.state %> </td>
+            <td> <%= port.name %> </td>
+        </tr>
+    <% end %>
+</table>
