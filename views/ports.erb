@@ -1,0 +1,17 @@
+
+<table border="1">
+    <tr>
+        <th>Port</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Count</th>
+    </tr>
+    <% @u_ports.each do | port | %>
+        <tr>
+            <td><a href="port/<%= port.port %>"> <%= port.port %> </a></td>
+            <td> <%=port.name%> </td>
+            <td> <%=port.type %> </td>
+            <td> <%=(@ports.all(:port=>port.port)).count %> </td>
+        </tr>
+    <% end %>
+</table>
