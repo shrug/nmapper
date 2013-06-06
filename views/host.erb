@@ -9,7 +9,7 @@
     </tr>
     <% @ports.uniq.each do | port | %>
         <tr>
-            <td> <%= port.port %> </td>
+            <td> <a href = <%= "/port/#{port.port}" %>><%= port.port %> </a></td>
             <td> <%= port.type %> </td>
             <td> <%= port.state %> </td>
             <td> <%= port.name %> </td>

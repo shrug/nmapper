@@ -29,3 +29,14 @@ get "/host/:id" do
   @title = @host.hostname
   erb :host
 end
+
+get "/port/:id" do
+  @ports=Port.all(:port=>params[:id])
+  @hosts=[]
+  @ports.each do |port|
+    @hosts.push(Host.get(port.hid))
+  end
+  @title = @ports.first.port
+  erb :port
+end
+

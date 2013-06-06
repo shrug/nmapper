@@ -1,0 +1,33 @@
+<h1><%= @ports.first.port %>
+
+<table border="1">
+    <tr>
+        <th>Port</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Count</th>
+    </tr>
+    <tr>
+        <td> <%= @ports.first.port %> </td>
+        <td> <%= @ports.first.type %> </td>
+        <td> <%= @ports.first.name %> </td>
+        <td> <%= @ports.count %> </td>
+    </tr>
+</table>
+
+<p>
+
+<table border="1">
+    <tr>
+        <th>Hostname</th>
+        <th>IP Address</th>
+    </tr>
+    <% @hosts.each do |host| %>
+        <tr>
+          <% host.hostname = host.ip4 if host.hostname =~ /\A\W*\Z/ %>
+          <td><a href="/host/<%=host.hid %>"> <%=host.hostname %> </a></td>
+          <td><%= host.ip4 %></td>
+    </tr>
+<% end %>
+</table>
+
