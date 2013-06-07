@@ -13,7 +13,7 @@
         <th><a href=?sortby=hostname&sort_dir=<%= new_sort_dir %>>Hostname</a></th>
         <th><a href=?sortby=ip4num&sort_dir=<%= new_sort_dir %>>IP Address</a></th>
         <th><a href=?sortby=tcpcount&sort_dir=<%= new_sort_dir %>># open TCP Ports</a></th>
-        <th><a href=?sortby=udpcount&sort_dir=<%= new_sort_dir %>># open UDP ports"</a></th>
+        <th><a href=?sortby=udpcount&sort_dir=<%= new_sort_dir %>># open UDP ports</a></th>
     </tr>
     <% @hosts.each do | host | %>
         <% host.hostname = host.ip4 if host.hostname =~ /\A\W*\Z/ %>
