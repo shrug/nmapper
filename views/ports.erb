@@ -6,21 +6,30 @@
       </style>
     <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
-
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/dataTables.sort.js"></script>
     <script type="text/javascript" charset="utf-8">
 	  $(document).ready(function() {
-		  $('#host').dataTable();
+		  $('#ports').dataTable({
+			  "aoColumns": [
+			        { "sType": "num-html" },
+			        null,
+			        null,
+			        null
+		  ], "bPaginate": false });
 	  } );
     </script>
   </head>
   <body>
-<table border="1">
-    <tr>
+<table id="ports" class="display">
+	<thead>
+      <tr>
         <th>Port</th>
         <th>Name</th>
         <th>Type</th>
         <th>Count</th>
-    </tr>
+      </tr>
+    </thead>
+	<tbody>
     <% @u_ports.each do | port | %>
         <tr>
             <td><a href="port/<%= port.port %>"> <%= port.port %> </a></td>
@@ -29,4 +38,5 @@
             <td> <%=(@ports.all(:port=>port.port)).count %> </td>
         </tr>
     <% end %>
+  </tbody>
 </table>

@@ -32,6 +32,7 @@ get "/host/:id" do
 end
 
 get "/ports" do
+  @title="Ports"
   @ports=[]
   @ports=Port.all(:order=>:port)
   @u_ports=@ports.uniq {|p| p.port} 

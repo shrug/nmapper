@@ -9,7 +9,10 @@
 
     <script type="text/javascript" charset="utf-8">
 	  $(document).ready(function() {
-		  $('#port').dataTable();
+		  $('#port').dataTable( {
+		    "bFilter": false, 
+		    "bPaginate": false,
+		    "bSort": false});
 		  $('#hosts').dataTable();
 	  } );
     </script>
@@ -36,7 +39,7 @@
 	  </tbody>
     </table>
 
-    <p>
+    <p><p>
 
     <table id="hosts" class="display">
 	  <thead>

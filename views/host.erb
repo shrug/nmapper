@@ -6,10 +6,16 @@
       </style>
     <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
-
+	<script type="text/javascript" charset="utf-8" src="/DataTables/media/js/dataTables.sort.js"></script>
     <script type="text/javascript" charset="utf-8">
 	  $(document).ready(function() {
-		  $('#host').dataTable();
+		  $('#host').dataTable({
+			  "aoColumns": [
+			        { "sType": "num-html" },
+			        null,
+			        null,
+			        null
+		  ]});
 	  } );
     </script>
   </head>

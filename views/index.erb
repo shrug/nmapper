@@ -6,10 +6,16 @@
       </style>
     <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
     <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
-
+	<script type="text/javascript" charset="utf-8" src="/DataTables/media/js/dataTables.sort.js"></script>
     <script type="text/javascript" charset="utf-8">
 	  $(document).ready(function() {
-		  $('#hosts').dataTable();
+		  $('#hosts').dataTable({
+			  "aoColumns": [
+			        { "sType": "html" },
+			        { "sType": "ip-address" },
+			        null,
+			        null
+		  ], "bPaginate": false });
 	  } );
     </script>
   </head>
