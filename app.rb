@@ -18,12 +18,13 @@ DataMapper.finalize
 get '/' do
   sortby = (params[:sortby] || 'tcpcount').to_sym
   sort_object = params[:sort_dir] == 'asc' ? sortby.asc : sortby.desc
-  @hosts=Host.all(:status=>"up", :order => [sort_object])
+  @hosts=Host.all(:status=>"up")
 
   erb :index
 end
 
 get "/host/:id" do
+  @ports=[]
   @host=Host.get(params[:id])
   @ports=Port.all(:hid=>params[:id], :state=>"open")
   @title = @host.hostname
@@ -31,6 +32,7 @@ get "/host/:id" do
 end
 
 get "/ports" do
+  @ports=[]
   @ports=Port.all(:order=>:port)
   @u_ports=@ports.uniq {|p| p.port} 
   erb :ports
@@ -38,6 +40,7 @@ end
 
 
 get "/port/:id" do
+  @ports=[]
   @ports=Port.all(:port=>params[:id], :state=>"open")
   @hosts=[]
   @ports.each do |port|

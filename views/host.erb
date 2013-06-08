@@ -1,18 +1,40 @@
-<h1><%= @host.hostname %>
+<html>
+  <head>
+	  <Title>nmapper: <%=@title%></Title>
+      <style type="text/css" title="currentStyle">
+        @import "/DataTables/media/css/demo_table.css";
+      </style>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
 
-<table border="1">
-    <tr>
-        <th>Port</th>
-        <th>Type</th>
-        <th>State</th>
-        <th>Name</th>
-    </tr>
-    <% @ports.uniq.each do | port | %>
-        <tr>
+    <script type="text/javascript" charset="utf-8">
+	  $(document).ready(function() {
+		  $('#host').dataTable();
+	  } );
+    </script>
+  </head>
+  <body>
+    <h1><%= @host.hostname %></h1>
+
+    <table id="host" class="display">
+      <thead>
+		<tr>
+          <th>Port</th>
+          <th>Type</th>
+          <th>State</th>
+          <th>Name</th>
+        </tr>
+	  </thead>
+	  <tbody>
+        <% @ports.uniq.each do | port | %>
+          <tr>
             <td> <a href = <%= "/port/#{port.port}" %>><%= port.port %> </a></td>
             <td> <%= port.type %> </td>
             <td> <%= port.state %> </td>
             <td> <%= port.name %> </td>
-        </tr>
-    <% end %>
-</table>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>

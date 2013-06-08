@@ -1,4 +1,19 @@
+<html>
+  <head>
+	  <Title>nmapper: <%=@title%></Title>
+      <style type="text/css" title="currentStyle">
+        @import "/DataTables/media/css/demo_table.css";
+      </style>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
 
+    <script type="text/javascript" charset="utf-8">
+	  $(document).ready(function() {
+		  $('#host').dataTable();
+	  } );
+    </script>
+  </head>
+  <body>
 <table border="1">
     <tr>
         <th>Port</th>

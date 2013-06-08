@@ -1,33 +1,59 @@
-<h1>Port: <%= @ports.first.port %>
+<html>
+  <head>
+	  <Title>nmapper: <%=@title%></Title>
+      <style type="text/css" title="currentStyle">
+        @import "/DataTables/media/css/demo_table.css";
+      </style>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
 
-<table border="1">
-    <tr>
-        <th>Port</th>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Count</th>
-    </tr>
-    <tr>
-        <td> <%= @ports.first.port %> </td>
-        <td> <%= @ports.first.type %> </td>
-        <td> <%= @ports.first.name %> </td>
-        <td> <%= @ports.count %> </td>
-    </tr>
-</table>
+    <script type="text/javascript" charset="utf-8">
+	  $(document).ready(function() {
+		  $('#port').dataTable();
+		  $('#hosts').dataTable();
+	  } );
+    </script>
+  </head>
+  <body>
+	<h1>Port: <%= @ports.first.port %></h1>
 
-<p>
+    <table id="port" class="display">
+	  <thead>
+        <tr>
+          <th>Port</th>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Count</th>
+        </tr>
+	  </thead>
+	  <tbody>
+        <tr>
+          <td> <%= @ports.first.port %> </td>
+          <td> <%= @ports.first.type %> </td>
+          <td> <%= @ports.first.name %> </td>
+		  <td> <%= @ports.count %> </td>
+        </tr>
+	  </tbody>
+    </table>
 
-<table border="1">
-    <tr>
-        <th>Hostname</th>
-        <th>IP Address</th>
-    </tr>
-    <% @hosts.each do |host| %>
+    <p>
+
+    <table id="hosts" class="display">
+	  <thead>
+        <tr>
+          <th>Hostname</th>
+          <th>IP Address</th>
+        </tr>
+	  </thead>
+	  <tbody>
+        <% @hosts.each do |host| %>
         <tr>
           <% host.hostname = host.ip4 if host.hostname =~ /\A\W*\Z/ %>
           <td><a href="/host/<%=host.hid %>"> <%=host.hostname %> </a></td>
           <td><%= host.ip4 %></td>
-    </tr>
-<% end %>
-</table>
-
+        </tr>
+        <% end %>
+	  </tbody>
+    </table>
+  </body>
+</html>

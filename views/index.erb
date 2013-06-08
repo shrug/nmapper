@@ -1,27 +1,44 @@
-<h1>Hosts</h1>
-<p>
-<a href="/ports">See ports</a>
-<p>
-<% if params[:sort_dir] == 'asc' %>
-    <% new_sort_dir = 'desc' %>
-<% else %>
-     <% new_sort_dir = 'asc' %>
-<% end %>
+<html>
+  <head>
+	  <Title>NMapper</Title>
+      <style type="text/css" title="currentStyle">
+        @import "/DataTables/media/css/demo_table.css";
+      </style>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/DataTables/media/js/jquery.dataTables.js"></script>
 
-<table border="1">
-    <tr>
-        <th><a href=?sortby=hostname&sort_dir=<%= new_sort_dir %>>Hostname</a></th>
-        <th><a href=?sortby=ip4num&sort_dir=<%= new_sort_dir %>>IP Address</a></th>
-        <th><a href=?sortby=tcpcount&sort_dir=<%= new_sort_dir %>># open TCP Ports</a></th>
-        <th><a href=?sortby=udpcount&sort_dir=<%= new_sort_dir %>># open UDP ports</a></th>
-    </tr>
-    <% @hosts.each do | host | %>
-        <% host.hostname = host.ip4 if host.hostname =~ /\A\W*\Z/ %>
+    <script type="text/javascript" charset="utf-8">
+	  $(document).ready(function() {
+		  $('#hosts').dataTable();
+	  } );
+    </script>
+  </head>
+
+  <body>
+    <h1>Hosts</h1>
+    <p>
+    <a href="/ports">See ports</a>
+    <p>
+    <table id="hosts" class="display">
+      <thead>
         <tr>
+          <th>Hostname</th>
+          <th>IP Address</th>
+          <th># open TCP Ports</th>
+          <th># open UDP ports</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hosts.each do | host | %>
+          <% host.hostname = host.ip4 if host.hostname =~ /\A\W*\Z/ %>
+          <tr>
             <td><a href="host/<%= host.hid %>"> <%= host.hostname %> </a></td>
             <td> <%=host.ip4%> </td>
             <td> <%=host.tcpcount %> </td>
             <td> <%=host.udpcount %> </td>
-        </tr>
-    <% end %>
-</table>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
