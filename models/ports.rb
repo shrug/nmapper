@@ -1,8 +1,9 @@
 class Port
     include DataMapper::Resource
-
-    property :hid, Integer, :key => true
-    property :port, Integer, :key => true
+    property :id, Serial
+    property :sid, Integer
+    property :hid, Integer
+    property :port, Integer
     property :type, String
     property :state, String
     property :name, String

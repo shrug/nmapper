@@ -1,7 +1,8 @@
 class Sequencing
     include DataMapper::Resource
-
-    property :hid, Integer, :key => true
+    property :id, Serial
+    property :sid, Integer
+    property :hid, Integer
     property :tcpclass, String
     property :tcpindex, String
     property :tcpvalues, String

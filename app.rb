@@ -13,6 +13,7 @@ end
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/nmap.db")
 DataMapper.finalize
+DataMapper.auto_upgrade!
 
 
 get '/' do
