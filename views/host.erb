@@ -32,7 +32,7 @@
         </tr>
 	  </thead>
 	  <tbody>
-        <% @ports.uniq.each do | port | %>
+        <% @ports.each do | port | %>
           <tr>
             <td> <a href = <%= "/port/#{port.port}" %>><%= port.port %> </a></td>
             <td> <%= port.type %> </td>

@@ -36,7 +36,6 @@
       </thead>
       <tbody>
         <% @hosts.each do | host | %>
-          <% host.hostname = host.ip4 if host.hostname =~ /\A\W*\Z/ %>
           <tr>
             <td><a href="host/<%= host.hid %>"> <%= host.hostname %> </a></td>
             <td> <%=host.ip4%> </td>
