@@ -1,11 +1,8 @@
 class Port
     include DataMapper::Resource
     property :id, Serial
-    property :sid, Integer
-    property :hid, Integer
     property :port, Integer
     property :type, String
-    property :state, String
     property :name, String
     property :tunnel, String
     property :product, String
@@ -18,5 +15,5 @@ class Port
     property :rpcnum, String
     property :fingerprint, String
 
-    belongs_to :host
+    belongs_to :host, :through => :port_mapping
 end

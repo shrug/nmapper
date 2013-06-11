@@ -15,6 +15,6 @@ class Host
     property :uptime, String
     property :upstr, String
 
-    has n, :ports
+    has n, :ports, :through => :port_mappings
 end
 
