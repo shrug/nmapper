@@ -3,7 +3,7 @@ class Port
 
     property :hid, Integer, :key => true
     property :port, Integer, :key => true
-    property :type, String
+    property :type, String, :key =>true
     property :state, String
     property :name, String
     property :tunnel, String

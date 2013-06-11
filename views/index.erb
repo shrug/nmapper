@@ -35,12 +35,13 @@
         </tr>
       </thead>
       <tbody>
-        <% @hosts.each do | host | %>
-          <tr>
-            <td><a href="host/<%= host.hid %>"> <%= host.hostname %> </a></td>
-            <td> <%=host.ip4%> </td>
-            <td> <%=host.tcpcount %> </td>
-            <td> <%=host.udpcount %> </td>
+          <% @hosts.each do | host | %>
+            <% host.hostname = host.ip4 if host.hostname =~ /\A\s*\Z/ %>
+            <tr>
+            <td><a href="host/<%=host.hid%>"><%=host.hostname%></a></td>
+            <td><%=host.ip4%></td>
+            <td><%=host.tcpcount%></td>
+            <td><%=host.udpcount%></td>
           </tr>
         <% end %>
       </tbody>
