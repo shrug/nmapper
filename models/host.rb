@@ -1,8 +1,7 @@
 class Host
     include DataMapper::Resource
-
+    property :id, Serial
     property :sid, Integer
-    property :hid, Serial
     property :ip4, String
     property :ip4num, Integer
     property :hostname, String

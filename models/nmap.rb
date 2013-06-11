@@ -1,7 +1,6 @@
 class Nmap
     include DataMapper::Resource
     property :id, Serial
-    property :sid, Integer
     property :version, String
     property :xmlversion, String
     property :args, String
