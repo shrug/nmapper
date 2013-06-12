@@ -14,7 +14,7 @@ puts "ARGV[0] = #{ARGV[0]}"
 mapper=Nmap::XML.new(ARGV[0])
 
 mapper.each_host do |host|
-    #next if Host.all(:hostname => host.hostnames.first)
+    next if host.status.state.to_s =~ /down/
     h=Host.first_or_create(:hostname => host.hostnames.first,
                 :ip4 => host.ipv4,
                 :ip4num => IPAddr.new(host.ipv4),

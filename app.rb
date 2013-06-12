@@ -11,15 +11,13 @@ configure :development do
         use Rack::Reloader
 end
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/nmap.db")
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/nmap_devel.db")
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
 
 get '/' do
-  sortby = (params[:sortby] || 'tcpcount').to_sym
-  sort_object = params[:sort_dir] == 'asc' ? sortby.asc : sortby.desc
-  @hosts=Host.all(:status=>"up")
+  @hosts=Host.all()
 
   erb :index
 end
