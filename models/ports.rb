@@ -5,5 +5,6 @@ class Port
     property :type, String
     property :name, String
 
-   #has 1, :host, {:through => :port_mapping}
+    has n, :port_mappings
+    has n, :hosts, :through => :port_mappings
 end

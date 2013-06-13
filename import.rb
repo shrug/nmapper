@@ -22,17 +22,17 @@ mapper.each_host do |host|
                 :tcpcount => host.tcp_ports.count,
                 :udpcount => host.udp_ports.count
                )
-    puts h.save
+    puts "Saving #{host.hostnames.first}: #{h.save}"
     host.each_port do |port|
       p = Port.first_or_create(:port => port.number,
                                :type => port.protocol,
                                :name => port.service
                               )
-       p.save
-       pm = Port_mapping.new(:host_id => h.id,
+       puts "Saving port #{port.number}: #{p.save}"
+       pm = PortMapping.new(:host_id => h.id,
                              :port_id => p.id,
                              :state => port.state.to_s
                             )
-      pm.save
+      puts "Saving port mapping for #{port.number}: #{pm.save}"
     end
 end

@@ -25,29 +25,24 @@ end
 get "/host/:id" do
   @ports=[]
   @host=Host.get(params[:id])
-  @ports=Port.all(:hid=>params[:id]) #, :state=>"open")
-  @host.hostname = @host.ip4 if @host.hostname =~ /\A\W*\Z/
+  @ports=@host.ports
+  @host.hostname = @host.ip4 if @host.hostname == nil
   @title = @host.hostname
   erb :host
 end
 
 get "/ports" do
   @title="Ports"
-  @ports=[]
-  @ports=Port.all(:order=>:port)
-  @u_ports=@ports.uniq {|p| [p.port, p.type]} 
+  @ports=Port.all
   erb :ports
 end
 
 
 get "/port/:id" do
-  @ports=[]
-  @ports=Port.all(:port=>params[:id]) #, :state=>"open")
+  @port=Port.get(params[:id])
   @hosts=[]
-  @ports.each do |port|
-    @hosts.push(Host.get(port.hid))
-  end
-  @title = @ports.first.port
+  @hosts=@port.hosts
+  @title = @port.port
   erb :port
 end
 

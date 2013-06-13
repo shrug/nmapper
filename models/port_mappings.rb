@@ -1,9 +1,7 @@
-class Port_mapping
+class PortMapping
   include DataMapper::Resource
-  property :host_id, Integer, :key => true
-  property :port_id, Integer, :key => true
   property :state, String
 
-  #belongs_to :host, :key => true
-  #belongs_to :port, :key => true
+  belongs_to :host, :key => true
+  belongs_to :port, :key => true
 end

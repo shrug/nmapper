@@ -35,9 +35,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @hosts.each do | host | %>
-          <tr>
-            <td><a href="host/<%= host.hid %>"> <%= host.hostname %> </a></td>
+          <% @hosts.each do | host | %>
+            <% puts "hostname = #{host.hostname.inspect}" %>
+            <% host.hostname = host.ip4 if host.hostname == nil%>
+            <% puts "hostname = #{host.hostname.inspect}" %>
+            <tr>
+            <td><a href="host/<%= host.id %>"> <%= host.hostname %> </a></td>
             <td> <%=host.ip4%> </td>
             <td> <%=host.tcpcount %> </td>
             <td> <%=host.udpcount %> </td>
