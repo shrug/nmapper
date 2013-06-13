@@ -31,12 +31,12 @@
       </tr>
     </thead>
 	<tbody>
-    <% @u_ports.each do | port | %>
+    <% @ports.each do | port | %>
         <tr>
-            <td><a href="port/<%= port.port %>"> <%= port.port %> </a></td>
+            <td><a href="port/<%= port.id %>"> <%= port.port %> </a></td>
             <td> <%=port.name%> </td>
             <td> <%=port.type %> </td>
-            <td> <%=(@ports.all(:port=>port.port)).count %> </td>
+            <td> <%=port.port_mappings.count %> </td>
         </tr>
     <% end %>
   </tbody>

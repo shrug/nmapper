@@ -1,21 +1,10 @@
 class Port
     include DataMapper::Resource
-
-    property :hid, Integer, :key => true
-    property :port, Integer, :key => true
-    property :type, String, :key =>true
-    property :state, String
+    property :id, Serial
+    property :port, Integer
+    property :type, String
     property :name, String
-    property :tunnel, String
-    property :product, String
-    property :version, String
-    property :extra, String
-    property :confidence, Integer
-    property :method, String
-    property :proto, String
-    property :owner, String
-    property :rpcnum, String
-    property :fingerprint, String
 
-    belongs_to :host
+    has n, :port_mappings
+    has n, :hosts, :through => :port_mappings
 end
