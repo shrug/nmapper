@@ -13,11 +13,7 @@ end
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/nmap_devel.db")
 DataMapper.finalize
-<<<<<<< HEAD
-#DataMapper.auto_upgrade!
-=======
 DataMapper.auto_upgrade!
->>>>>>> db-refactor
 
 
 get '/' do
