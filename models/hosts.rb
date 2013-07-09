@@ -17,6 +17,23 @@ class Host
 
     def self.in_subnet(subnet)
         # Return all hosts in subnet
+        
+        # TODO: check this for validity before we do anything with it
+        net=IPAddr.new(subnet)
+        
+        hosts=Host.all
+        puts hosts.count
+        ihosts=[]
+        hosts.each do |host|
+          puts host.hostname
+          ihosts.push[host] if net.include? IPAddr.new(host.ip4)
+        end
+        ihosts
+        
+        
+        
+        #return IPAddr.new(subnet).include? IPAddr.new(@ip4)
+
     end
 
 end
