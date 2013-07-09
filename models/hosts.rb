@@ -26,9 +26,9 @@ class Host
         ihosts=[]
         hosts.each do |host|
           puts host.hostname
-          ihosts.push[host] if net.include? IPAddr.new(host.ip4)
+          ihosts.push(host) if net.include? IPAddr.new(host.ip4)
         end
-        ihosts
+        return ihosts
         
         
         
